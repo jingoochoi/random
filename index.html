@@ -8,22 +8,32 @@
 </head>
 <body>
     <div class="box1" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);font-size: 300px;border: 1px solid black;width: 600px;display: flex;text-align: center;cursor: pointer;">
-        <span class="spa1" style="width: 300px;border-right: 1px solid black;opacity: 0;">A</span>
-        <span class="spa2" style="width: 300px;opacity: 0;">5</span>
+        <span class="spa1" style="width: 300px;border-right: 1px solid black;">A</span>
+        <span class="spa2" style="width: 300px;">5</span>
     </div>
     <script>
         let cont=0
         const abet=['A','B','C','D','E','F','G',]
-        let r1=Math.floor(Math.random()*abet.length)
-        let r2=Math.ceil(Math.random()*5)
+        let roll
+        function dice() {
+            cont++
+            let r1=Math.floor(Math.random()*abet.length)
+            let r2=Math.ceil(Math.random()*5)
+            $('.spa1').text(abet[r1])
+            $('.spa2').text(r2)
+            if (cont >= 100) {
+                clearInterval(roll); // setInterval 중지
+            }
+        }
         $('.box1').click(function () {
             // setInterval(() => {
-                $('.spa1').css({opacity:1}).text(abet[r1])
-                $('.spa2').css({opacity:1}).text(r2)
+                clearInterval(roll);
+                cont=0
+                roll = setInterval(dice, 10);
             // }, 10);
-            setTimeout(() => {
-                location.reload()
-            }, 1000);
+            // setTimeout(() => {
+            //     location.reload()
+            // }, 1000);
         })
     </script>
 </body>

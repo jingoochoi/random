@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <div class="box1" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);font-size: 300px;border: 1px solid black;width: 600px;display: flex;text-align: center;cursor: pointer;">
+        <span class="spa1" style="width: 300px;border-right: 1px solid black;opacity: 0;">A</span>
+        <span class="spa2" style="width: 300px;opacity: 0;">5</span>
+    </div>
+    <script>
+        let cont=0
+        const abet=['A','B','C','D','E','F','G',]
+        let r1=Math.floor(Math.random()*abet.length)
+        let r2=Math.ceil(Math.random()*5)
+        $('.box1').click(function () {
+            // setInterval(() => {
+                $('.spa1').css({opacity:1}).text(abet[r1])
+                $('.spa2').css({opacity:1}).text(r2)
+            // }, 10);
+            setTimeout(() => {
+                location.reload()
+            }, 1000);
+        })
+    </script>
+</body>
+</html>
